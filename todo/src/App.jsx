@@ -19,6 +19,8 @@ function App() {
     }
 
     dispatch({type: ADD_TODO, payload:todos})
+
+    setInputValue('')
   }
 
   return (
