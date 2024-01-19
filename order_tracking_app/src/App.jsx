@@ -1,34 +1,52 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from 'react';
 import './App.css'
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const value = useSelector((state) => state.orders);
+
+  const current = new Date();
+  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+
+  const [name, setName] = useState('');
+  const [meal, setMeal] = useState('');
+  // const [price, setPrice] = useState('');
+
+  const submitForm = (event) => {
+    event.preventDefault();
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <form action="" onSubmit={submitForm}>
+        <div>
+        <p>Welcome to Ayebs' Kitchen</p>
+        <p>Place Your Order</p>
+        <p>{date}</p>
+        <p>Order Id: </p>
+        </div>
+
+        <label htmlFor="">Customer name</label>
+        <input type="text" 
+        placeholder='Enter your name'
+        value={name}
+        onChange={(event) => setName(event.target.value)}/>
+        <br />
+
+        <label htmlFor="">Meal</label>
+        <input type="text" 
+        placeholder='Type package name' 
+        value={meal} 
+        onChange={(event) => setMeal(event.target.value)}/>
+        <br />
+
+        <label htmlFor="">Number of packages</label>
+        <input type="number" min={1} max={20} />
+        <br />
+
+        <button type='button'>Order Now</button>
+      </form>
+    </div>
   )
 }
 
