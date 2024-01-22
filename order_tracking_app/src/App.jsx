@@ -47,7 +47,6 @@ function App() {
         <p>Welcome to Ayebs' Kitchen</p>
         <p>Place Your Order</p>
         <p>{date}</p>
-        <p>Order Id: {id}</p>
       </div>
 
       <form action="" onSubmit={submitForm}>
@@ -82,7 +81,7 @@ function App() {
         <button type="submit">Order Now</button>
       </form>
 
-      <div>
+      <div >
         {value.map((item) => (
           <div key={item.id}>
             <p>{item.name}</p>
